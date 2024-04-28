@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+
+
+    <!-- Configure the table information body. targetRuntime specifies the MyBatis3 version -->
+    <context id="tables" targetRuntime="MyBatis3">
+
+
+        <commentGenerator>
+            <property name="suppressAllComments" value="true" />
+        </commentGenerator>
+
+        <!-- Configure the database connection information -->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://localhost:3306/fin_platform"
+                        userId="root"
+                        password="">
+        </jdbcConnection>
+
+        <!-- Generate the model class, targetPackage specifies the package name of the model class, and targetProject specifies which project in eclipse the generated model is placed under-->
+        <javaModelGenerator targetPackage="org.example.api.model"
+                            targetProject="C:\Users\61499\IdeaProjects\final_project\mapper\src\main\java">
+            <property name="enableSubPackages" value="false" />
+            <property name="trimStrings" value="false" />
+        </javaModelGenerator>
+
+        <!-- Generate the Mapper.xml file for MyBatis, targetPackage specifies the package name of the mapper.xml file,
+        and targetProject specifies which project in eclipse the generated mapper.xml is placed under -->
+        <sqlMapGenerator targetPackage="mappers" targetProject="C:\Users\61499\IdeaProjects\final_project\mapper\src\main\resources">
+            <property name="enableSubPackages" value="false" />
+        </sqlMapGenerator>
+
+        <!-- Generate the Mapper.xml file for MyBatis, targetPackage specifies the package name of the mapper.xml file,
+        targetProject specifies which eclipse project the generated mapper.xml is placed under to generate the MyBatis
+        Mapper interface class file. targetPackage specifies the Mapper interface class package name. targetProject specifies
+         which project in eclipse the generated Mapper interface is placed under -->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="org.example.dataservice.mapper" targetProject="C:\Users\61499\IdeaProjects\final_project\mapper\src\main\java">
+            <property name="enableSubPackages" value="false" />
+        </javaClientGenerator>
+
+        <!-- Database table name and corresponding Java model class name -->
+        <table tableName="b_prod_info" domainObjectName="ProductInfo"
+               enableCountByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               selectByExampleQueryId="false"/>
+
+        <table tableName="b_bid_info" domainObjectName="BidInfo"
+               enableCountByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               selectByExampleQueryId="false"/>
+
+
+        <table tableName="b_income_record" domainObjectName="IncomeRecord"
+               enableCountByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               selectByExampleQueryId="false"/>
+
+
+        <table tableName="b_recharge_record" domainObjectName="RechargeRecord"
+               enableCountByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               selectByExampleQueryId="false"/>
+
+
+        <table tableName="u_user" domainObjectName="User"
+               enableCountByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               selectByExampleQueryId="false"/>
+
+
+        <table tableName="u_finance_account" domainObjectName="FinanceAccount"
+               enableCountByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               selectByExampleQueryId="false"/>
+    </context>
+
+</generatorConfiguration>
