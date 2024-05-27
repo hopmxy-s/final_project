@@ -33,4 +33,12 @@ public interface ProductInfoMapper {
     int updateByPrimaryKey(ProductInfo record);
 
 
+    int updateLeftProductMoney(@Param("id") Integer productId, @Param("money") BigDecimal money);
+
+    int updateSelled(@Param("productId") Integer productId);
+
+    List<ProductInfo> selectFullTimeProducts(@Param("beginTime") Object beginTime, @Param("endTime") Object endTime);
+
+    int updateStatus(@Param("id") Integer id, @Param("newStatus") int newStatus);
+
 }

@@ -11,6 +11,7 @@
         <module name="micr-dataservice" />
         <module name="ajax-demo" />
         <module name="micr-common" />
+        <module name="micr-task" />
       </profile>
     </annotationProcessing>
   </component>
@@ -21,6 +22,7 @@
       <module name="micr-common" options="-parameters" />
       <module name="micr-dataservice" options="-parameters" />
       <module name="micr-parent" options="-parameters" />
+      <module name="micr-task" options="-parameters" />
       <module name="micr-web" options="-parameters" />
     </option>
   </component>

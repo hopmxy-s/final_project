@@ -5,13 +5,11 @@ import com.example.front.view.RespResult;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.example.api.model.ProductInfo;
+import org.example.api.pojo.BidInfoProduct;
 import org.example.api.pojo.MultiProduct;
 import org.example.common.enums.RCode;
 import org.example.common.util.CommonUtil;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -31,7 +29,29 @@ public class ProductController extends BaseController{
         return result;
     }
 
+//  search investment records and info of certain product
+    @ApiOperation(value = "product detail", notes = "search 5 investment records and info of certain product")
+    @GetMapping("/product/info")
+    public RespResult queryProductDetail(@RequestParam("productId") Integer id){
+        RespResult result = RespResult.fail();
+        if (id != null && id > 0) {
+            ProductInfo productInfo = productService.queryById(id);
+            if (productInfo != null) {
+                List<BidInfoProduct> bidInfoList = investService.queryBidListByProductId(id, 1, 5);
+                result = RespResult.ok();
+                result.setData(productInfo);
+                result.setList(bidInfoList);
+            } else {
+                result.setRCode(RCode.PRODUCT_OFFLINE);
+            }
+
+
+        }
+        return result;
+    }
+
     //Paging query by product type
+    @ApiOperation(value = "product paging search", notes = "paging search according to product types")
     @GetMapping("/product/list")
     public RespResult queryProductByType(@RequestParam("ptype") Integer pType,
                                          @RequestParam(value = "pageNo", required = false, defaultValue = "1") Integer pageNo,

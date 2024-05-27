@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="EntryPointsManager">
+    <writeAnnotations>
+      <writeAnnotation name="org.apache.dubbo.config.annotation.DubboReference" />
+    </writeAnnotations>
+  </component>
   <component name="ExternalStorageConfigurationManager" enabled="true" />
   <component name="MavenProjectsManager">
     <option name="originalFiles">
@@ -8,6 +13,7 @@
         <option value="$PROJECT_DIR$/micr-dataservice/pom.xml" />
         <option value="$PROJECT_DIR$/micr-web/pom.xml" />
         <option value="$PROJECT_DIR$/ajax-demo/pom.xml" />
+        <option value="$PROJECT_DIR$/micr-task/pom.xml" />
       </list>
     </option>
   </component>

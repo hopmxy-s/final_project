@@ -21,3 +21,7 @@ dubbo:
   provider:
     timeout: 50000
     retries: 0
+
+ylb:
+  config:
+    password-salt: fiwsjkljkiljklnk1536wscswscsewcsvwecswdwsfw151632sd

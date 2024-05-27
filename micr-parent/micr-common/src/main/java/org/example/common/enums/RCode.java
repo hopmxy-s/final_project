@@ -6,8 +6,14 @@ public enum RCode {
     SUCC(1000, "request success"),
     REQUEST_PARAM_ERR(1001, "wrong request param"),
     REQUEST_PRODUCT_TYPE_ERR(1002, "wrong product type"),
+    PRODUCT_OFFLINE(1003, "product offline"),
+    PHONE_FORMAT_ERR(1004, "phone number format is wrong"),
+    PHONE_EXISTS(1005, "phone number already exists"),
+    SMS_CODE_CAN_USE(1006, "verification code can continue to use"),
+    SMS_CODE_INVALID(1007, "verification code is invalid"),
+    PHONE_LOGIN_PASSWORD_INVALID(1008, "phone number or password is invalid"),
 
-    ;
+    TOKEN_INVALID(1009, "token is invalid");
 
 
 

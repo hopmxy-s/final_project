@@ -4,7 +4,7 @@
   <resultMap id="BaseResultMap" type="org.example.api.model.IncomeRecord">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="uid" jdbcType="INTEGER" property="uid" />
-    <result column="loan_id" jdbcType="INTEGER" property="loanId" />
+    <result column="prod_id" jdbcType="INTEGER" property="prodId" />
     <result column="bid_id" jdbcType="INTEGER" property="bidId" />
     <result column="bid_money" jdbcType="DECIMAL" property="bidMoney" />
     <result column="income_date" jdbcType="DATE" property="incomeDate" />
@@ -12,7 +12,7 @@
     <result column="income_status" jdbcType="INTEGER" property="incomeStatus" />
   </resultMap>
   <sql id="Base_Column_List">
-    id, uid, loan_id, bid_id, bid_money, income_date, income_money, income_status
+    id, uid, prod_id, bid_id, bid_money, income_date, income_money, income_status
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select
@@ -20,15 +20,35 @@
     from b_income_record
     where id = #{id,jdbcType=INTEGER}
   </select>
+
+
+    <select id="selectExpiredIncome" resultMap="BaseResultMap">
+      SELECT
+      <include refid="Base_Column_List" />
+      FROM
+      b_income_record
+      WHERE
+      income_status = 0
+      AND income_date = #{expiredDate}
+    </select>
+  <select id="selectIncomeByUid" resultMap = "BaseResultMap">
+    select <include refid="Base_Column_List"></include>
+    from b_income_record
+    where uid = #{uid}
+    order by income_date desc
+    limit #{offset}, #{rows}
+  </select>
+
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from b_income_record
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="org.example.api.model.IncomeRecord">
-    insert into b_income_record (id, uid, loan_id,
+    insert into b_income_record (id, uid, prod_id,
                                  bid_id, bid_money, income_date,
                                  income_money, income_status)
-    values (#{id,jdbcType=INTEGER}, #{uid,jdbcType=INTEGER}, #{loanId,jdbcType=INTEGER},
+    values (#{id,jdbcType=INTEGER}, #{uid,jdbcType=INTEGER}, #{prodId,jdbcType=INTEGER},
             #{bidId,jdbcType=INTEGER}, #{bidMoney,jdbcType=DECIMAL}, #{incomeDate,jdbcType=DATE},
             #{incomeMoney,jdbcType=DECIMAL}, #{incomeStatus,jdbcType=INTEGER})
   </insert>
@@ -41,8 +61,8 @@
       <if test="uid != null">
         uid,
       </if>
-      <if test="loanId != null">
-        loan_id,
+      <if test="prodId != null">
+        prod_id,
       </if>
       <if test="bidId != null">
         bid_id,
@@ -67,8 +87,8 @@
       <if test="uid != null">
         #{uid,jdbcType=INTEGER},
       </if>
-      <if test="loanId != null">
-        #{loanId,jdbcType=INTEGER},
+      <if test="prodId != null">
+        #{prodId,jdbcType=INTEGER},
       </if>
       <if test="bidId != null">
         #{bidId,jdbcType=INTEGER},
@@ -93,8 +113,8 @@
       <if test="uid != null">
         uid = #{uid,jdbcType=INTEGER},
       </if>
-      <if test="loanId != null">
-        loan_id = #{loanId,jdbcType=INTEGER},
+      <if test="prodId != null">
+        prod_id = #{prodId,jdbcType=INTEGER},
       </if>
       <if test="bidId != null">
         bid_id = #{bidId,jdbcType=INTEGER},
@@ -117,7 +137,7 @@
   <update id="updateByPrimaryKey" parameterType="org.example.api.model.IncomeRecord">
     update b_income_record
     set uid = #{uid,jdbcType=INTEGER},
-        loan_id = #{loanId,jdbcType=INTEGER},
+        prod_id = #{prodId,jdbcType=INTEGER},
         bid_id = #{bidId,jdbcType=INTEGER},
         bid_money = #{bidMoney,jdbcType=DECIMAL},
         income_date = #{incomeDate,jdbcType=DATE},

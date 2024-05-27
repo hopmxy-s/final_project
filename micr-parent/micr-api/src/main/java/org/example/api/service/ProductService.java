@@ -15,6 +15,6 @@ public interface ProductService {
 
     /*Multiple product data on home page*/
     MultiProduct queryIndexPageProducts();
-
+    ProductInfo  queryById(Integer id);
 
 }

@@ -66,5 +66,14 @@ public class ProductServiceImpl implements ProductService {
         return result;
     }
 
+    @Override
+    public ProductInfo queryById(Integer id) {
+        ProductInfo productInfo = null;
+        if (id != null && id > 0) {
+            productInfo = productInfoMapper.selectByPrimaryKey(id);
+        }
+        return productInfo;
+    }
+
 
 }

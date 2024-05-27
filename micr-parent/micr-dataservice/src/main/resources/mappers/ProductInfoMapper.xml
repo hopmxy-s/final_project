@@ -50,7 +50,19 @@
 
   </select>
 
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <select id="selectFullTimeProducts" resultMap="BaseResultMap">
+      SELECT
+      <include refid="Base_Column_List" />
+      FROM
+      b_product_info
+      WHERE
+      product_status = 1
+      AND product_full_time >= #{beginTime}  AND product_full_time &lt; #{endTime}
+      order by id
+
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from b_product_info
     where id = #{id,jdbcType=INTEGER}
   </delete>
@@ -218,5 +230,16 @@
       product_full_time = #{productFullTime,jdbcType=TIMESTAMP},
       product_desc = #{productDesc,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
+  </update>
+    <update id="updateLeftProductMoney">
+      update b_product_info set left_product_money = left_product_money - #{money}
+      where id = #{id} and (left_product_money - #{money} >= 0)
+    </update>
+  <update id="updateSelled">
+    update b_product_info set product_status = 1 , product_full_time = now()
+    where id = #{id}
+  </update>
+  <update id="updateStatus">
+    update b_product_info set product_status = #{newStatus} where id = #{id}
   </update>
 </mapper>

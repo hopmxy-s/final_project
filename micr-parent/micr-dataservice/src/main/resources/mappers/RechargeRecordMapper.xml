@@ -21,7 +21,18 @@
     from b_recharge_record
     where id = #{id,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+
+
+    <select id="selectByUid" resultMap = "BaseResultMap">
+        select <include refid="Base_Column_List"></include>
+        from b_recharge_record
+        where uid = #{uid}
+        order by recharge_time desc
+        limit #{offset}, #{rows}
+    </select>
+
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from b_recharge_record
     where id = #{id,jdbcType=INTEGER}
   </delete>

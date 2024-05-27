@@ -27,3 +27,13 @@ dubbo:
     check: false
     timeout: 50000
     retries: 0
+
+jdwx:
+  sms:
+    url: http://zwp.market.alicloudapi.com/sms/sendv2
+    appkey: 9e839528f01f427591cb042d2831997a
+    content: 【智能云】您的验证码是568126。如非本人操作，请忽略本短信
+    loginText: 【智能云】登录的验证码是568126。如非本人操作，请忽略本短信
+
+jwt:
+  secret: 342903934cb944808920b642616b3e76

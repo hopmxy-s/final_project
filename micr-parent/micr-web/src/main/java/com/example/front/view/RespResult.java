@@ -12,8 +12,19 @@ public class RespResult {
     private int code;
 //    text description of code
     private String msg;
-//    single data
+
+    public String getAccessToken() {
+        return accessToken;
+    }
+
+    public void setAccessToken(String accessToken) {
+        this.accessToken = accessToken;
+    }
+
+    //    single data
     private Object data;
+
+    private String accessToken;
 //    list data
     private List list;
     //    paging

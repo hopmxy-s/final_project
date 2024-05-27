@@ -9,7 +9,7 @@ public class IncomeRecord implements Serializable {
 
     private Integer uid;
 
-    private Integer loanId;
+    private Integer prodId;
 
     private Integer bidId;
 
@@ -25,6 +25,7 @@ public class IncomeRecord implements Serializable {
         return id;
     }
 
+
     public void setId(Integer id) {
         this.id = id;
     }
@@ -37,12 +38,13 @@ public class IncomeRecord implements Serializable {
         this.uid = uid;
     }
 
-    public Integer getLoanId() {
-        return loanId;
+
+    public Integer getProdId() {
+        return prodId;
     }
 
-    public void setLoanId(Integer loanId) {
-        this.loanId = loanId;
+    public void setProdId(Integer prodId) {
+        this.prodId = prodId;
     }
 
     public Integer getBidId() {

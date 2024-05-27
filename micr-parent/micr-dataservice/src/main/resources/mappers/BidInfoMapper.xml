@@ -25,9 +25,46 @@
     from b_bid_info
     where id = #{id,jdbcType=INTEGER}
   </select>
+    <select id="selectByProductId" resultType="org.example.api.pojo.BidInfoProduct">
+      SELECT
+        bid.id,
+        CONCAT( SUBSTRING( u.phone FROM 1 FOR 3 ), "******", SUBSTRING( u.phone FROM 10 FOR 2 ) ) AS phone,
+        DATE_FORMAT( bid.bid_time, "%Y-%m-%d %H:%i:%s" ) AS bidTime,
+        bid.bid_money AS bidMoney
+      FROM
+        b_bid_info bid
+          JOIN u_user u ON bid.uid = u.id
+      WHERE
+        bid.prod_id = #{productId}
+      ORDER BY
+        bid.bid_time DESC
+        LIMIT #{offset},#{rows}
+    </select>
 
+    <select id="selectByProdId" resultType="org.example.api.model.BidInfo">
+      SELECT
+      <include refid="Base_Column_List" />
+      FROM
+      b_bid_info
+      WHERE
+      prod_id = #{productId}  AND bid_status = 1
+      ORDER BY  id
+    </select>
 
-
+    <select id="selectBidByUid" resultType="org.example.api.pojo.UserBidInfo">
+      SELECT
+        pro.product_name,
+        DATE_FORMAT( bid.bid_time,"%Y-%m-%d %H:%i:%s")AS bidTime,
+        bid.bid_money AS bidMoney
+      FROM
+        b_bid_info bid join b_product_info pro
+      WHERE
+        bid.prod_id = pro.id and
+        bid.uid = #{uid}
+      ORDER BY
+        bid.bid_time DESC
+        LIMIT #{offset}, #{rows}
+    </select>
 
 
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
