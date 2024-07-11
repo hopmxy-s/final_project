@@ -4,7 +4,7 @@
       <div class="public-head-nav">
         <div class="public-head-left">
           <h1 class="public-head-logo"><a href="javascript:;">
-            <img src="@/assets/image/logo.png" alt="">
+            <img src="@/assets/image/logo.png" alt="" style="max-width:60%;  position: relative; top: -15px;">
           </a></h1>
           <ul class="public-head-list">
             <li><a href="javascript:void(0)" @click="goLink('/')">Home Page</a></li>
@@ -24,8 +24,8 @@
           <a href="javascript:void(0);" @click="goLink('/page/user/usercenter', )">center</a>
         </div>
         <div class="public-head-right" v-else>
-          <a href="javascript:void(0);" @click="goLink('/page/user/login',)">log in</a>
-          <a href="javascript:void(0);" @click="goLink('/page/user/register', )">register</a>
+          <a href="javascript:void(0);" @click="goLink('/page/user/login',)">Login</a>
+          <a href="javascript:void(0);" @click="goLink('/page/user/register', )">Register</a>
         </div>
       </div>
     </div>

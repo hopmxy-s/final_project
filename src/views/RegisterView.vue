@@ -4,8 +4,10 @@
     <div class="login-content">
       <div class="login-flex">
         <div class="login-left">
-          <p>With the trust of millions of users&nbsp;&nbsp;&nbsp;&nbsp;<span>{{ historyAvgRate }}%</span> annualized return</p>
-          <p>Millions in R&D investment&nbsp;&nbsp;&nbsp;&nbsp;Billions in registered capital platform</p>
+          <p>With the trust of millions of users</p>
+          <p><span>{{ historyAvgRate }}%</span> annualized return</p>
+          <p>Millions in R&D investment</p>
+          <p>Billions in registered capital platform</p>
         </div>
         <!---->
         <div class="login-box">
@@ -30,7 +32,7 @@
               <p class="prompt_yan"></p>
             </div>
             <div class="alert-input-agree">
-              <input type="checkbox" v-model="agree">I have read and agree to <a href="javascript:;" target="_blank">"Service Agreement"</a>
+              <input type="checkbox" v-model="agree" style="margin-right:10px;">I have read and agree to&nbsp;  <a href="javascript:;" target="_blank">"Service Agreement"</a>
             </div>
             <div class="alert-input-btn">
               <input type="button" class="login-submit" @click="requestUserRegister" value="Register">

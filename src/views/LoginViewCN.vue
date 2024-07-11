@@ -4,33 +4,33 @@
     <div class="login-content">
       <div class="login-flex">
         <div class="login-left">
-          <h3>Join the financial network</h3>
-          <p>Enjoy<span>{{platInfo.historyAvgRate}}%</span>of annualized historical returns.</p>
-          <p>Total of<span>{{platInfo.registerUsers}}</span>platform users.</p>
-          <p>Cumulative transaction amount of<span>{{platInfo.sumBidMoney}}</span>CNY.</p>
+          <h3>加入动力金融网</h3>
+          <p>坐享<span>{{platInfo.historyAvgRate}}%</span>历史年化收益</p>
+          <p>平台用户<span>{{platInfo.registerUsers}}</span>位  </p>
+          <p>累计成交金额<span>{{platInfo.sumBidMoney}}</span>元</p>
         </div>
         <!---->
         <div class="login-box">
-          <h3 class="login-title">Login</h3>
+          <h3 class="login-title">欢迎登录</h3>
           <form action="" id="login_Submit">
             <div class="alert-input">
-              <!--<input class="form-border user-name" name="username" type="text" placeholder="Username">
+              <!--<input class="form-border user-name" name="username" type="text" placeholder="您的姓名">
               <p class="prompt_name"></p>-->
-              <input type="text" class="form-border user-num" v-model="phone" @blur="checkPhone" name="mobile" placeholder="11-digit Mobile Number">
+              <input type="text" class="form-border user-num" v-model="phone" @blur="checkPhone" name="mobile" placeholder="请输入11位手机号">
               <div class="err">{{phoneErr}}</div>
               <p class="prompt_num"></p>
-              <input type="password" placeholder="Password" class="form-border user-pass" v-model="password" @blur="checkPassword" autocomplete name="password">
+              <input type="password" placeholder="请输入登录密码" class="form-border user-pass" v-model="password" @blur="checkPassword" autocomplete name="password">
               <div class="err">{{passwordErr}}</div>
               <p class="prompt_pass"></p>
               <div class="form-yzm form-border">
-                <input class="yzm-write" type="text" v-model="code" @blur="checkCode" placeholder="Enter SMS verification code">
-                <input class="yzm-send" type="button" value="Get Code"  id="yzmBtn"  @click="requestSmsCode" >
+                <input class="yzm-write" type="text" v-model="code" @blur="checkCode" placeholder="输入短信验证码">
+                <input class="yzm-send" type="button" value="获取验证码"  id="yzmBtn"  @click="requestSmsCode" >
               </div>
               <div class="err">{{codeErr}}</div>
               <p class="prompt_yan"></p>
             </div>
             <div class="alert-input-btn">
-              <input type="button" @click="userLogin" class="login-submit" value="Login">
+              <input type="button" @click="userLogin" class="login-submit" value="登录">
             </div>
           </form>
 
@@ -79,33 +79,33 @@ export default {
   methods:{
     checkPhone(){
       if (this.phone == '' || this.phone == undefined) {
-        this.phoneErr = 'Please enter a mobile number';
+        this.phoneErr = '请输入手机号';
       } else if (this.phone.length != 11) {
-        this.phoneErr = 'The mobile number must be 11 digits';
+        this.phoneErr = '手机号长度不足11位';
       } else if (!/^1[1-9]\d{9}$/.test(this.phone)) {
-        this.phoneErr = 'Incorrect mobile number format'
+        this.phoneErr = '手机号格式不正确'
       } else {
         this.phoneErr = '';
       }
     },
     checkPassword() {
-      if (this.password === '' || this.password === undefined) {
-        this.passwordErr = 'Please enter a password';
+      if (this.password == '' || this.password == undefined) {
+        this.passwordErr = '请输入密码';
       } else if (this.password.length < 6 || this.password.length > 20) {
-        this.passwordErr = 'The password length should be 6-20 characters';
+        this.passwordErr = '密码长度是6-20位';
       } else if (!/^[0-9a-zA-Z]+$/.test(this.password)) {
-        this.passwordErr = 'The password can only use numbers and letters';
+        this.passwordErr = '密码只能使用数字和字母';
       } else if (!/^(([a-zA-Z]+[0-9]+)|([0-9]+[a-zA-Z]+))[a-zA-Z0-9]*/.test(this.password)) {
-        this.passwordErr = 'The password should be a combination of numbers and letters';
+        this.passwordErr = '密码是数字和字母的混合';
       } else {
         this.passwordErr = '';
       }
     },
     checkCode() {
-      if (this.code === '' || this.code === undefined) {
-        this.codeErr = 'Verification code is required';
-      } else if (this.code.length !== 4) {
-        this.codeErr = 'The verification code must be 4 digits';
+      if (this.code == '' || this.code == undefined) {
+        this.codeErr = '必须输入验证码';
+      } else if (this.code.length != 4) {
+        this.codeErr = '验证码是4位的';
       } else {
         this.codeErr = '';
       }
@@ -116,7 +116,7 @@ export default {
         //调用服务器发到短信的接口  /code/login
         doGet('/v1/sms/code/login',{phone:this.phone}).then(resp=>{
           if( resp && resp.data.code == 1000 ){
-            layx.msg('SMS has been sent', {dialogIcon: 'success', position: 'ct'});
+            layx.msg('短信已经发送了', {dialogIcon: 'success', position: 'ct'});
           }
         })
       }
