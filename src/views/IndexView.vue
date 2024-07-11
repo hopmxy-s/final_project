@@ -8,12 +8,12 @@
         <div class="swiper-wrapper">
           <div class="swiper-slide">
             <a href="javascript:;" >
-              <img src="@/assets/image/banner.jpg" alt="">
+              <img src="@/assets/image/banner.png" alt="">
             </a>
           </div>
           <div class="swiper-slide">
             <a href="javascript:;" >
-              <img src="@/assets/image/banner.jpg" alt="">
+              <img src="@/assets/image/banner.png" alt="">
             </a>
           </div>
         </div>
@@ -151,28 +151,32 @@
         <li>
           <img src="@/assets/image/2-icon1.png" alt="">
           <p>Quality Loans</p>
-          <span>Strict risk control, multiple audits</span>
+          <span>Strict risk control,</span>
+          <span>multiple audits</span>
 
         </li>
         <li>
           <img src="@/assets/image/2-icon2.png" alt="">
           <p>Next Day Interest</p>
-          <span>Lightning-fast transactions, who's faster than me</span>
+          <span>Lightning-fast transactions</span>
         </li>
         <li>
           <img src="@/assets/image/2-icon3.png" alt="">
           <p>Open All Year</p>
-          <span>Millions of users, always by your side</span>
+          <span>Consistent availability </span>
+          <span>and support</span>
         </li>
         <li>
           <img src="@/assets/image/2-icon4.png" alt="">
           <p>Trusted Service</p>
-          <span>Millions of users, always by your side</span>
+          <span>Millions of users,</span> 
+          <span>reputable team</span>
         </li>
         <li>
           <img src="@/assets/image/2-icon5.png" alt="">
           <p>Technical Guarantee</p>
-          <span>Millions invested, focused on R&D</span>
+          <span>Focused on R&D, </span>
+          <span>cutting-edge performance</span>
         </li>
       </ul>
     </div>
